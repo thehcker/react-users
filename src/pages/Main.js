@@ -35,7 +35,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <h2>Main Page</h2>
+        <h2 className="main-head">Main Page</h2>
         {this.state.todos.map((todo, index) => {
           return (
             <div>

@@ -20,11 +20,17 @@ body button {
 }
 
 .main {
-  text-align: center;
+  margin-left: 40%;
   margin-top: 100px;
 }
+.main-head {
+  margin-left: 10%;
+}
+
 .main ul li {
   font-size: 18px;
+  display: inline;
+  padding-left: 5px;
 }
 
 .login {
