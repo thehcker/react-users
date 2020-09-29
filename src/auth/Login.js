@@ -6,22 +6,55 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      loggedIn: false
     };
   }
+  fetchData = () => {
+    const data = {
+      email: this.props.email,
+      password: this.props.password
+    };
+    console.log(data);
+    let url = " https://hidden-everglades-98624.herokuapp.com/api/login";
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => {
+        if (res.ok) {
+          console.log("JSON: ", res.json());
+          return res.json();
+        }
+        throw new Error("There was an error in authentication");
+      })
+      .then(data => {
+        this.setState({
+          data: data
+        });
+        console.log("Data: ", data);
+      })
+      .catch(err => {
+        console.log("Error: ", err);
+      });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    alert("Login Attemped");
+    this.fetchData();
+
+    this.setState({
+      email: "",
+      password: ""
+    });
+    this.props.history.push("/");
+    // alert("Login Attemped");
   };
-  //   handleChange = e => {
-  //     let { value } = e.target;
-  //     console.log(value);
-  //     this.setState({
-  //       email: value,
-  //       password: value
-  //     });
-  //   };
+
   render() {
     const {
       email,

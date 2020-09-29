@@ -6,6 +6,9 @@ h1 {
   padding: 20px;
   color: black;
 }
+#feedback {
+  color: #f00;
+}
 body button {
   background: "asd";
   border-radius: 10px;

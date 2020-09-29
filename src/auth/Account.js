@@ -16,7 +16,34 @@ class Account extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    alert("Account created successfully");
+    const data = {
+      firstName: this.props.firstName,
+      lastName: this.props.lastName,
+      phone: this.props.phone,
+      email: this.props.email,
+      password: this.props.password
+    };
+    let url = " https://hidden-everglades-98624.herokuapp.com/api/user";
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(data)
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("There was an error during User Creation");
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   };
   render() {
     const {

@@ -15,10 +15,10 @@ class Main extends Component {
     };
   }
 
-  getStyle = () => {
+  getStyle = todo => {
     return {
       listStyle: "none",
-      textDecoration: this.state.todos.completed ? "line-through" : "none"
+      textDecoration: todo.completed ? "line-through" : "none"
     };
   };
 
@@ -40,8 +40,11 @@ class Main extends Component {
           return (
             <div>
               <ul>
-                <input type="checkbox" onChange={this.handleChange} />
-                <li key={todo.id} style={this.getStyle()} className="todos">
+                <input
+                  type="checkbox"
+                  onChange={this.handleChange.bind(this, todo.id)}
+                />
+                <li key={todo.id} style={this.getStyle(todo)} className="todos">
                   {todo.title}
                 </li>
               </ul>
