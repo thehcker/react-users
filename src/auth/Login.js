@@ -19,7 +19,7 @@ class Login extends Component {
       email: "",
       password: ""
     });
-    // this.props.history.push("/");
+    this.props.history.push("/");
     // alert("Login Attemped");
   };
 
