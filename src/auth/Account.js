@@ -17,13 +17,14 @@ class Account extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const data = {
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      phone: this.props.phone,
-      email: this.props.email,
-      password: this.props.password
+      firstName: this.props.values.firstName,
+      lastName: this.props.values.lastName,
+      phone: this.props.values.phone,
+      email: this.props.values.email,
+      password: this.props.values.password
     };
-    let url = " https://hidden-everglades-98624.herokuapp.com/api/user";
+    console.log(data);
+    let url = "https://hidden-everglades-98624.herokuapp.com/api/user";
     fetch(url, {
       method: "POST",
       mode: "no-cors",
@@ -33,6 +34,7 @@ class Account extends Component {
       body: JSON.stringify(data)
     })
       .then(res => {
+        console.log(res);
         if (res.ok) {
           return res.json();
         }
